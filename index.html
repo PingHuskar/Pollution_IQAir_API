@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather via AirVisual API</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.iqair.com/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iqair.com/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.iqair.com/assets/favicons/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Prompt:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet"> -->
+
+</head>
+<body>
+    <div class="container">
+    <h1 id="currentlocation">Current Location : <span id="city"></span>, <span id="state"></span>, <span id="country"></span></h1>
+    <h1>Coor : <span id="coor"></span></h1>
+    <h1>Timestamp : <span id="Timestamp"></span></h1>
+    <h1 id="pollution">Pollution
+        <ul>
+            <li>US AQI : <span id="aqius"></span></li>
+            <li>CN AQI : <span id="aqicn"></span></li>
+        </ul>
+    </h1>
+    <h1 id="weather">Weather
+        <ul>
+            <li>Humidity : <span id="hu"></span> %</li>
+            <li>Outlook : <span id="ic"></span></li>
+            <li>Pressure : <span id="pr"></span> mb</li>
+            <li>Temperature : <span id="tp"></span> °C</li>
+            <!-- <li><span id="wd"></span></li> -->
+            <li>Wind Speed : <span id="ws"></span> m/s (<span id="ws2"></span> mph)</li>
+        </ul>
+    </h1>
+    </div>
+
+    <script src="app.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
+</body>
+</html>
