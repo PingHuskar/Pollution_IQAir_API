@@ -1,10 +1,31 @@
+const key = `c1ff6aa7-b142-45cc-96ef-cb51026b61e4`
+// doc 
+// https://api-docs.iqair.com/?version=latest
 
-fetch("http://api.airvisual.com/v2/nearest_city?key=c1ff6aa7-b142-45cc-96ef-cb51026b61e4")
+// http://api.airvisual.com/v2/states?country=Thailand&key=${key}
+// 
+fetch(`http://api.airvisual.com/v2/cities?state=Bangkok&country=Thailand&key=${key}`)
 .then(res => res.json())
-.then(data => showData(data))
-.catch((e) => {
-    console.log("Error",e);
+.then(data => {
+    // console.log(data['data'])
+    var cities = []
+    for (var city of data['data']) {
+        cities.push(...Object.values(city))
+    }
+    // console.log(cities)
+    queryData(cities[Math.floor(Math.random() * cities.length)])
 })
+
+function queryData(city) {
+    fetch(`http://api.airvisual.com/v2/city?city=${city}&state=Bangkok&country=Thailand&key=${key}`)
+    // fetch(`http://api.airvisual.com/v2/nearest_city?key=${key}`)
+    // fetch(`http://api.airvisual.com/v2/nearest_city?country=THA&key=${key}`)
+    .then(res => res.json())
+    .then(data => showData(data))
+    .catch((e) => {
+        console.log("Error",e);
+    })
+}
 function showData(data) {
     const query = data['data']
     console.log(query)
