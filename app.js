@@ -5,7 +5,7 @@ const key = `c1ff6aa7-b142-45cc-96ef-cb51026b61e4`
 // http://api.airvisual.com/v2/states?country=Thailand&key=${key}
 // 
 
-fetch(`http://api.airvisual.com/v2/states?country=Thailand&key=${key}`)
+fetch(`https://api.airvisual.com/v2/states?country=Thailand&key=${key}`)
 .then(res => res.json())
 .then(dota => {
     var states = []
@@ -22,7 +22,7 @@ fetch(`http://api.airvisual.com/v2/states?country=Thailand&key=${key}`)
 
 function setState(state) {
     console.log(state)
-    fetch(`http://api.airvisual.com/v2/cities?state=${state}&country=Thailand&key=${key}`)
+    fetch(`https://api.airvisual.com/v2/cities?state=${state}&country=Thailand&key=${key}`)
     .then(res => res.json())
     .then(data => {
         // console.log(data['data'])
@@ -43,7 +43,7 @@ function setState(state) {
 }
 
 function queryData(city) {
-    fetch(`http://api.airvisual.com/v2/city?city=${city}&state=Bangkok&country=Thailand&key=${key}`)
+    fetch(`https://api.airvisual.com/v2/city?city=${city}&state=Bangkok&country=Thailand&key=${key}`)
     // fetch(`http://api.airvisual.com/v2/nearest_city?key=${key}`)
     // fetch(`http://api.airvisual.com/v2/nearest_city?country=THA&key=${key}`)
     .then(res => res.json())
