@@ -28,7 +28,7 @@
             <label for="states">Choose a city:</label>
             <select id="states" name="states" oninput="setState(this.value)"></select>
             <label for="cities">Choose a city:</label>
-            <select id="cities" name="cities" oninput="queryData(this.value)"></select>
+            <select id="cities" name="cities" oninput="queryData(this.value)" onmouseenter="queryData(this.value)"></select>
         </form>
     <h1 id="currentlocation">Current Location : <span id="city"></span>, <span id="state"></span>, <span id="country"></span></h1>
     <h1>Coor : <span id="coor"></span></h1>
