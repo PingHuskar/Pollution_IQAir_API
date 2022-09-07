@@ -4,17 +4,43 @@ const key = `c1ff6aa7-b142-45cc-96ef-cb51026b61e4`
 
 // http://api.airvisual.com/v2/states?country=Thailand&key=${key}
 // 
-fetch(`http://api.airvisual.com/v2/cities?state=Bangkok&country=Thailand&key=${key}`)
+
+fetch(`http://api.airvisual.com/v2/states?country=Thailand&key=${key}`)
 .then(res => res.json())
-.then(data => {
-    // console.log(data['data'])
-    var cities = []
-    for (var city of data['data']) {
-        cities.push(...Object.values(city))
+.then(dota => {
+    var states = []
+    var x = document.getElementById(`states`)
+    for (var state of dota['data']) {
+        var option = document.createElement("option");
+        var b = [...Object.values(state)]
+        states.push(...Object.values(state))
+        option.text = `${b}`;
+        option.value = `${b}`;
+        x.add(option);
     }
-    // console.log(cities)
-    queryData(cities[Math.floor(Math.random() * cities.length)])
 })
+
+function setState(state) {
+    console.log(state)
+    fetch(`http://api.airvisual.com/v2/cities?state=${state}&country=Thailand&key=${key}`)
+    .then(res => res.json())
+    .then(data => {
+        // console.log(data['data'])
+        var cities = []
+        var x = document.getElementById(`cities`)
+        x.innerHTML = ``
+        for (var city of data['data']) {
+            var option = document.createElement("option");
+            var b = [...Object.values(city)]
+            cities.push(...Object.values(city))
+            option.text = `${b}`;
+            option.value = `${b}`;
+            x.add(option);
+        }
+        // console.log(cities)
+        // queryData(cities[Math.floor(Math.random() * cities.length)])
+    })
+}
 
 function queryData(city) {
     fetch(`http://api.airvisual.com/v2/city?city=${city}&state=Bangkok&country=Thailand&key=${key}`)

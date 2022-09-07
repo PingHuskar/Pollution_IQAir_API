@@ -1,0 +1,31 @@
+.container {
+    margin-top: 7vh;
+    form {
+        display: flex;
+        label {
+            font-size: 5vh;
+            padding-right: 20px;
+        }
+        select {
+            height: 50px;
+            font-size: 33px;
+        }
+    }
+}
+
+@media screen and (min-width: 601px) {
+    div.container {
+        font-size: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.container {
+        font-size: 30px;
+    }
+}
+
+body {
+    background-color: black !important;
+    color: white !important;
+}
