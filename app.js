@@ -1,24 +1,99 @@
-const key = `c1ff6aa7-b142-45cc-96ef-cb51026b61e4`
+const searchParam = new URLSearchParams(location.search)
+const key = searchParam.get(`key`) || localStorage.getItem(`key`)
 // doc 
 // https://api-docs.iqair.com/?version=latest
 
 // http://api.airvisual.com/v2/states?country=Thailand&key=${key}
 // 
 
-fetch(`https://api.airvisual.com/v2/states?country=Thailand&key=${key}`)
-.then(res => res.json())
-.then(dota => {
-    var states = []
-    var x = document.getElementById(`states`)
-    for (var state of dota['data']) {
-        var option = document.createElement("option");
-        var b = [...Object.values(state)]
-        states.push(...Object.values(state))
-        option.text = `${b}`;
-        option.value = `${b}`;
-        x.add(option);
-    }
-})
+
+let states = [
+  "",
+  "Amnat Charoen",
+  "Ang Thong",
+  "Bangkok",
+  "Buriram",
+  "Chachoengsao",
+  "Chai Nat",
+  "Chaiyaphum",
+  "Changwat Bueng Kan",
+  "Changwat Ubon Ratchathani",
+  "Changwat Udon Thani",
+  "Chanthaburi",
+  "Chiang Mai",
+  "Chiang Rai",
+  "Chon Buri",
+  "Chumphon",
+  "Kalasin",
+  "Kamphaeng Phet",
+  "Kanchanaburi",
+  "Khon Kaen",
+  "Krabi",
+  "Lampang",
+  "Lamphun",
+  "Loei",
+  "Lop Buri",
+  "Mae Hong Son",
+  "Maha Sarakham",
+  "Mukdahan",
+  "Nakhon Nayok",
+  "Nakhon Pathom",
+  "Nakhon Phanom",
+  "Nakhon Ratchasima",
+  "Nakhon Sawan",
+  "Nakhon Si Thammarat",
+  "Nan",
+  "Narathiwat",
+  "Nong Bua Lamphu",
+  "Nong Khai",
+  "Nonthaburi",
+  "Pathum Thani",
+  "Pattani",
+  "Phangnga",
+  "Phatthalung",
+  "Phayao",
+  "Phetchabun",
+  "Phetchaburi",
+  "Phichit",
+  "Phitsanulok",
+  "Phra Nakhon Si Ayutthaya",
+  "Phrae",
+  "Phuket",
+  "Prachin Buri",
+  "Prachuap Khiri Khan",
+  "Ranong",
+  "Ratchaburi",
+  "Rayong",
+  "Roi Et",
+  "Sa Kaeo",
+  "Sakon Nakhon",
+  "Samut Prakan",
+  "Samut Sakhon",
+  "Samut Songkhram",
+  "Sara Buri",
+  "Satun",
+  "Sing Buri",
+  "Sisaket",
+  "Songkhla",
+  "Sukhothai",
+  "Suphan Buri",
+  "Surat Thani",
+  "Surin",
+  "Tak",
+  "Trang",
+  "Trat",
+  "Uthai Thani",
+  "Uttaradit",
+  "Yala",
+  "Yasothon",
+];
+var x = document.getElementById(`states`);
+for (var state of states) {
+  var option = document.createElement("option");
+  option.text = `${state}`;
+  option.value = `${state}`;
+  x.add(option);
+}
 
 function setState(state) {
     console.log(state)
@@ -61,7 +136,7 @@ function showData(data) {
     
     document.getElementById("coor").innerHTML = `${query['location']['coordinates'][1]},${query['location']['coordinates'][0]}`;
     // console.log(query['current']['weather'])
-    document.getElementById("Timestamp").innerHTML = query['current']['weather']['ts'];
+    document.getElementById("Timestamp").innerHTML = new Date(query['current']['weather']['ts']).toLocaleString();
     // weather
     document.getElementById("hu").innerHTML = query['current']['weather']['hu'];
     const ic = query['current']['weather']['ic']
